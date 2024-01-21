@@ -11,5 +11,7 @@ try{
   console.log(`Erro ao conectar com o banco${error}`)
 }
 
+module.exports = sequelize
+
 
 
