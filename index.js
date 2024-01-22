@@ -8,7 +8,9 @@ const conn = require('./db/conn')
 
 const Task = require('./models/Task')
 
-app.engine('handlebars', engine.exphbs())
+const tasksRoutes = require('./routes/tasksRoutes')
+
+app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
 
 app.use(
@@ -20,6 +22,8 @@ app.use(
 app.use(express.json())
 
 app.use(express.static('public'))
+
+app.use('/tasks', tasksRoutes)
 
 conn.sync()
 .then( () => {
